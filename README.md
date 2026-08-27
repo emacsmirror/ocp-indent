@@ -1,39 +1,25 @@
-A simple tool and library to indent OCaml programs, developed and maintained by OCamlPro (Louis Gesbert). 
+A simple tool and library to indent OCaml programs, developed and maintained by OCamlPro (Louis Gesbert).
 License: LGPL 2.1 with linking exception
 
 ## Installation
 
 ### Using OPAM
 
-The simplest way to install `ocp-indent` is using [OPAM](http://opam.ocamlpro.com):
+You can install `ocp-indent` using [OPAM](https://opam.ocaml.org/):
 
 ```bash
 opam install ocp-indent
 ```
 
-### By hand
-
-You can also compile and install `ocp-indent` from sources. You'll need `ocaml
-(>= 3.12.1)` and `ocp-build (>= 1.99.6-beta)`:
-
-```bash
-./configure
-make
-make install
-```
-
-If you use opam and want it installed alongside ocaml, you may want to use
-`./configure --prefix $(opam config var prefix)`.
-
 ## Usage
 
 The above installation step copies elisp scripts to
-`<prefix>/share/emacs/site-lisp/` and vim scripts to
-`<prefix>/share/ocp-indent/vim/`. You then need to load them in the editor of
+`<opam-switch-prefix>/share/emacs/site-lisp/` and vim scripts to
+`<opam-switch-prefix>/share/ocp-indent/vim/`. You then need to load them in the editor of
 your choice to automatically use ocp-indent.
 
 Installing OPAM package
-[`user-setup`](https://opam.ocaml.org/packages/user-setup/user-setup.0.3/) will
+[`user-setup`](https://opam.ocaml.org/packages/user-setup/) will
 trigger automatic configuration for popular editors (emacs and vim currently,
 but more are in the works). If you prefer to handle your configuration manually,
 read on.
@@ -97,6 +83,7 @@ ocp-indent --help
 ```
 
 ### Configuration file
+
 The same parameters can be defined in a configuration file, allowing for user
 defaults and per-project parameters. The latter is particularly convenient to
 transparently ensure consistency in projects with many contributors, without
@@ -112,6 +99,7 @@ Have a look at ocp-indent's own [`.ocp-indent`](.ocp-indent) file for an
 example.
 
 ### In-file configuration
+
 There is no built-in support for in-file configuration directives. Yet, some
 editors already provide these features, and with emacs, starting your file with a
 line like:
@@ -176,32 +164,7 @@ unit-tests
 currently failing tests can be seen
 [here](http://htmlpreview.github.com/?https://github.com/OCamlPro/ocp-indent/blob/master/tests/failing.html).
 
+## Contributing
 
-## Testing
-
-It's hard to deliver a great indenter without tests. We've built
-`ocp-indent` based on a growing collection of unit-tests. If you find an
-indentation bug, feel free to send us a code snippet that we will
-incorporate into our test suite.
-
-The tests are organized as follows:
-
-* `tests/passing` contains tests that are properly indented and should be left
-  unchanged by ocp-indent.
-* `tests/failing` contains tests for which ocp-indent currently returns the
-  results in `tests/failing-output`, hence `meld tests/failing{,-output}` should
-  give an overview of currently known bugs (also available online
-  [here](http://htmlpreview.github.com/?https://github.com/OCamlPro/ocp-indent/blob/master/tests/failing.html)).
-* `tests/test.sh` checks the current state against the reference state (checked
-  into git).
-* `tests/test.sh --[git-]update` updates the current reference state.
-* See `tests/test.sh --help` for more
-
-Please make sure to run `make && tests/test.sh --git-update` before any commit,
-so that the repo always reflects the state of the program.
-
-
-> Old Readme 
-ocp-indent is a simple tool and library to indent OCaml code.
-ocp-indent is part of TypeRex, developed and maintained by OCamlPro. Documentation to install and use this tool is available on http://www.typerex.org/ocp-indent.html
-It is released under LGPL v2.1 with linking exception.
+If you'd like to contribute to `ocp-indent`, please head over our [contributing
+guide](CONTRIBUTING.md).
