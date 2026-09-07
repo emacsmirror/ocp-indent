@@ -1,3 +1,13 @@
 (cram
+ (applies_to * \ inplace.t windows-preserves-crlf.t strict-with.t)
+ (deps
+  (package ocp-indent)))
+
+(cram
+ (applies_to inplace.t windows-preserves-crlf.t strict-with.t)
+ (enabled_if
+  (and
+   (<> %{system} "macosx")
+   (<> %{system} "freebsd")))
  (deps
   (package ocp-indent)))
